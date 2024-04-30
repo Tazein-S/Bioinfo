@@ -1,9 +1,0 @@
-#this is the gitignore file for the Bioinfo repo
-
-.ipynb_checkpoints/
-  
-Bioinfo_Proj.Rproj
-
-__pycache__/
-  
-.Rproj.user/
