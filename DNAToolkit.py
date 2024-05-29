@@ -51,7 +51,7 @@ def GCcontent(dna_seq):
     
     return (str(GC_per) + ' %')            
 
-def Hammingdistance(s,t):
+def hammingDistance(s,t):
     counter = 0
     
     for i in range(len(s)):
@@ -59,3 +59,47 @@ def Hammingdistance(s,t):
             counter += 1    
             
     return counter
+
+def RNAtoProtein(rna_seq):
+    RNA_to_protein = {
+    "UUU": "F", "CUU": "L", "AUU": "I", "GUU": "V",
+    "UUC": "F", "CUC": "L", "AUC": "I", "GUC": "V",
+    "UUA": "L", "CUA": "L", "AUA": "I", "GUA": "V",
+    "UUG": "L", "CUG": "L", "AUG": "M", "GUG": "V",
+    "UCU": "S", "CCU": "P", "ACU": "T", "GCU": "A",
+    "UCC": "S", "CCC": "P", "ACC": "T", "GCC": "A",
+    "UCA": "S", "CCA": "P", "ACA": "T", "GCA": "A",
+    "UCG": "S", "CCG": "P", "ACG": "T", "GCG": "A",
+    "UAU": "Y", "CAU": "H", "AAU": "N", "GAU": "D",
+    "UAC": "Y", "CAC": "H", "AAC": "N", "GAC": "D",
+    "UAA": "Stop", "CAA": "Q", "AAA": "K", "GAA": "E",
+    "UAG": "Stop", "CAG": "Q", "AAG": "K", "GAG": "E",
+    "UGU": "C", "CGU": "R", "AGU": "S", "GGU": "G",
+    "UGC": "C", "CGC": "R", "AGC": "S", "GGC": "G",
+    "UGA": "Stop", "CGA": "R", "AGA": "R", "GGA": "G",
+    "UGG": "W", "CGG": "R", "AGG": "R", "GGG": "G"}
+    
+    protein_str = ''
+    
+    #from online, cuts the RNA_str into sets of three
+    split_str = [rna_seq[i:i+3] for i in range(0, len(rna_seq), 3)]
+    
+    for codon in split_str:
+        if RNA_to_protein[codon] != 'Stop':
+            protein_str += (RNA_to_protein[codon])
+        else:
+            pass
+    return(protein_str)
+    
+def motifDNA(dna_seq,motif):
+    motif_positions = []
+    
+    for i in range(len(dna_seq)):    
+        value = dna_seq[i:i+len(motif)]
+        
+        if value == motif:
+            motif_positions.append(i+1)
+            
+    motif_positions = ((' '.join(map(str, motif_positions))))
+    
+    return motif_positions
