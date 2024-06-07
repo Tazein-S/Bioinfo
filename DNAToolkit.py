@@ -1,5 +1,6 @@
 ### Created on 4/29/24 by Tazein Shah
-### Based off the tutorial made by rebelScience on Youtube
+### Made with my solutions to Rosalind problems (one function per problem)
+### The first three functions are based off the tutorial made by rebelScience on Youtube (everything else I did independently)
 
 #define the nucleotides
 nucleotides = ["A", "C", "G", "T"]
